@@ -3,8 +3,8 @@ class SubmissionService {
     this.repo = repo;
   }
 
-  async createSubmission() {
-    return await this.repo.createSubmission();
+  async createSubmission(submissionDetails) {
+    return await this.repo.createSubmission(submissionDetails);
   }
 }
 
