@@ -1,5 +1,7 @@
 const submissionQueue = require('../queue/submissionQueue');
 
 module.exports = async function (name, payload) {
-  await submissionQueue.add(name, payload);
+  const job = await submissionQueue.add(name, payload);
+
+  return job;
 }
