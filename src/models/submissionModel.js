@@ -1,19 +1,28 @@
 const mongoose = require('mongoose');
 
-const submissionSchema = mongoose.Schema({
-  language: {
+const submissionSchema = new mongoose.Schema({
+  userId: {
     type: String,
-    required: [true, "Language can't be empty!!!"]
+    requird: [true, "user id for submission is missing"],
+  },
+  problemId: {
+    type: String,
+    requird: [true, "Problem id for submission is missing"],
   },
   code: {
     type: String,
-    required: [true, "Code is required for the submission"]
+    requird: [true, "Code for submission is missing"]
+  },
+  language: {
+    type: String,
+    requird: [true, "Language for submission is missing"]
   },
   status: {
     type: String,
-    enum: ['Queued', 'Pending', 'Completed'],
-    required: [true, "Status is mandatory"]
+    enum: ["Pending", "Success", "RE", "TLE", "MLE", "WA"],
+    default: "Pending"
   }
-})
+});
 
-module.exports = mongoose.model("Submission", submissionSchema);
+const Submission = mongoose.model('Submission', submissionSchema);
+module.exports = Submission
